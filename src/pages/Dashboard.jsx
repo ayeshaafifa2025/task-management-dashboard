@@ -223,21 +223,21 @@ const Dashboard = () => {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
                     
                     <div className="lg:col-span-1 bg-white p-6 md:p-8 rounded-[32px] border border-gray-100 overflow-hidden">
-                        <h3 className="font-bold text-xl mb-6">User Management</h3>
+                        <h3 className="font-bold text-xl text-black mb-6">User Management</h3>
                         <div className="overflow-x-auto">
                             <table className="table w-full">
                                 <thead>
-                                    <tr className="text-gray-400 text-[10px] uppercase border-b border-gray-50">
-                                        <th className="bg-white px-2">Name</th>
+                                    <tr className="text-black text-[10px] uppercase border-b border-gray-50">
+                                        <th className="bg-white  px-2">Name</th>
                                         <th className="bg-white px-2 text-center">Status</th>
                                         <th className="bg-white px-2 text-right">Join Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {users?.map((user) => (
-                                        <tr key={user.id} className="border-b last:border-0 border-gray-50">
+                                        <tr key={user.id} className="border-b last:border-0  border-gray-50">
                                             <td className="py-4 px-2">
-                                                <div className="font-bold text-xs md:text-sm">{user.name}</div>
+                                                <div className="font-bold text-black text-xs md:text-sm">{user.name}</div>
                                                 <div className="text-[9px] md:text-[10px] text-gray-400">{user.email}</div>
                                             </td>
                                             <td className="text-center px-2">
@@ -254,11 +254,12 @@ const Dashboard = () => {
                     </div>
 
                    
-<div className="bg-white p-6 md:p-8 rounded-[32px] border border-gray-100 flex flex-col h-full shadow-sm">
+
+  <div className="bg-white p-6 md:p-8 rounded-[32px] border border-gray-100 flex flex-col h-full shadow-sm">
     <div className="flex justify-between items-center mb-6">
-        <h3 className="font-bold text-xl">Project Analytics</h3>
-        <select className="select select-ghost select-xs focus:ring-0 outline-none text-gray-400">
-            <p>Weekly</p>
+        <h3 className="font-bold text-xl text-black">Project Analytics</h3>
+        <select className="select select-ghost select-xs focus:ring-0 outline-none text-gray-400 cursor-pointer">
+            <option>Weekly</option>
         </select>
     </div>
 
@@ -274,7 +275,9 @@ const Dashboard = () => {
                         <stop offset="95%" stopColor="#006A4E" stopOpacity={0}/>
                     </linearGradient>
                 </defs>
+                
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0F0F0" />
+                
                 <XAxis 
                     dataKey="date" 
                     axisLine={false} 
@@ -282,14 +285,33 @@ const Dashboard = () => {
                     tick={{fontSize: 10, fill: '#9CA3AF'}}
                     tickFormatter={(str) => str.split('-').slice(2).join('/')} 
                 />
+                
                 <YAxis 
                     axisLine={false} 
                     tickLine={false} 
                     tick={{fontSize: 10, fill: '#9CA3AF'}} 
                 />
+
                 <Tooltip 
-                    contentStyle={{ borderRadius: '15px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                    contentStyle={{ 
+                        borderRadius: '15px', 
+                        border: 'none', 
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                        padding: '10px'
+                    }}
+                    labelStyle={{ 
+                        color: 'black', 
+                        fontWeight: 'bold', 
+                        marginBottom: '4px',
+                        fontSize: '12px' 
+                    }}
+                    itemStyle={{
+                        fontSize: '11px',
+                        padding: '2px 0'
+                    }}
+                    cursor={{ stroke: '#006A4E', strokeWidth: 1, strokeDasharray: '5 5' }}
                 />
+
                 <Area 
                     type="monotone" 
                     dataKey="views" 
@@ -298,6 +320,7 @@ const Dashboard = () => {
                     fillOpacity={1} 
                     fill="url(#colorViews)" 
                 />
+                
                 <Area 
                     type="monotone" 
                     dataKey="clicks" 
@@ -309,26 +332,26 @@ const Dashboard = () => {
         </ResponsiveContainer>
     </div>
 
+    
     <div className="mt-6 flex justify-around items-center border-t pt-4">
         <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-[#006A4E]"></div>
             <div>
                 <p className="text-[10px] text-gray-400 font-bold uppercase">Total Views</p>
-                <p className="text-sm font-black">{totalViews?.toLocaleString()}</p>
+                <p className="text-sm text-black font-black">{totalViews?.toLocaleString()}</p>
             </div>
         </div>
         <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-[#FFA500]"></div>
             <div>
                 <p className="text-[10px] text-gray-400 font-bold uppercase">Total Clicks</p>
-                <p className="text-sm font-black">{totalClicks?.toLocaleString()}</p>
+                <p className="text-sm text-black font-black">{totalClicks?.toLocaleString()}</p>
             </div>
         </div>
     </div>
 </div>
- 
                 <div className="bg-white p-6 md:p-8 rounded-[32px] border border-gray-100">
-                    <h3 className="font-bold text-xl mb-6">Product Inventory</h3>
+                    <h3 className="font-bold text-xl text-black mb-6">Product Inventory</h3>
                     <div className="overflow-x-auto">
                         <table className="table w-full min-w-[500px]">
                             <thead>
@@ -344,8 +367,8 @@ const Dashboard = () => {
                                     <tr key={product.id} className="border-b last:border-0 border-gray-50">
                                         <td className="py-4 font-bold text-xs md:text-sm text-[#006A4E]">{product.name}</td>
                                         <td><span className="badge badge-ghost text-[10px] capitalize">{product.category}</span></td>
-                                        <td className="text-xs md:text-sm font-medium">${product.price}</td>
-                                        <td className="text-xs md:text-sm font-bold text-right">{product.sales}</td>
+                                        <td className="text-xs text-black md:text-sm font-medium">${product.price}</td>
+                                        <td className="text-xs md:text-sm text-black font-bold text-right">{product.sales}</td>
                                     </tr>
                                 ))}
                             </tbody>

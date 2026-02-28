@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
 const Login = () => {
     const [email, setEmail] = useState('user1@example.com');
     const [password, setPassword] = useState('password123');
@@ -9,12 +8,10 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
-
     const handleLogin = async (e) => {
         e.preventDefault();
         setLoading(true);
         setError("");
-
         try {
             const response = await fetch('https://task-api-eight-flax.vercel.app/api/login', {
                 method: 'POST',
@@ -37,7 +34,6 @@ const Login = () => {
             setLoading(false);
         }
     };
-
     return (
         <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
             <div className="card w-full max-w-sm shadow-2xl bg-base-100 border border-green-100">
